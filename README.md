@@ -1,6 +1,8 @@
 # QuantumChallenges
 My solutions to a series of challenges designed to engage with quantum computing, using Qiskit. These challenges are from Loren Sklar in the official Qiskit slack.
 
+In addition, `boilerplate.py` has the setup code needed to run quantum experiments (both on local simulators and exterior backends), visualize circuits, retrieve previously run jobs, and visualize the experiment results. Feel free to use it in your own projects!
+
 ## Challenge 1 (coinFlip)
 "Implement a quantum coin flip. A quantum coin flip returns a single bit with value '0' 50% of the time and '1' 50% of the time."
 
