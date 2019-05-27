@@ -1,3 +1,6 @@
+# Boilerplate code to interface with Qiskit
+# by Matthew Gregoire, 2019
+
 # In general, not all imports are needed. Important ones include:
 # IBMQ, QuantumCircuit, QuantumRegister, ClassicalRegister, execute, Aer
 
@@ -8,6 +11,8 @@ from qiskit.providers.ibmq import least_busy
 Q = 3   # number of qubits
 C = 3   # number of classical bits
 
+# Requires at least one account to already be saved.
+# If not, consult the Qiskit documentation at qiskit.org.
 IBMQ.load_accounts(hub=None)
 
 qc = QuantumCircuit(Q,C)
@@ -17,6 +22,7 @@ qc = QuantumCircuit(Q,C)
 # Draw the quantum circuit. 
 qc.draw(output='mpl').savefig("path\\to\\__circuit_file___.png")
 
+# Number of times to run the circuit
 SHOTS = 1024
 
 # Run the job on a simulator
