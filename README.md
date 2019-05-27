@@ -4,7 +4,7 @@ My solutions to a series of challenges designed to engage with quantum computing
 ## Challenge 1 (coinFlip)
 "Implement a quantum coin flip. A quantum coin flip returns a single bit with value '0' 50% of the time and '1' 50% of the time."
 
-Just something to get warmed up. This challenge demonstrates the most important aspects of interfacing with Qiskit, without doing anything incredibly complicated. It also makes use of superposition, which is interesting. The plot was 
+Just something to get warmed up. This challenge demonstrates the most important aspects of interfacing with Qiskit, without doing anything incredibly complicated. It also makes use of superposition, which is interesting. The plot was made using the `plot_histogram ` function, running the simulation 1024 times.
 
 ## Challenge 2 (quantumDice)
 "Implement a set of quantum dice. Roll(dice) returns 1 through 8 with equal probability.In addition to standard dice, use entanglement to implement a set of dice with memory. An even roll always follows an odd roll follows an even roll, etc."
