@@ -14,6 +14,9 @@ SHOTS = 2048
 
 doors = set([0,1,2])
 
+
+# Will return the win probabilities for both staying and switiching
+# doors in the classical Monty Hall problem.
 def monty_classical(iterations):
 
     wins_stay = 0
@@ -38,12 +41,14 @@ def monty_classical(iterations):
     
     return round(wins_stay / iterations, DIGITS), round(wins_switch / iterations, DIGITS)
 
+# Will return the win probabilities of both staying and switching
+# doors in a quantum version of the Monty Hall problem.
 def monty_quantum(iterations):
     
     # The player door is arbitrary, so just always set it to 0.
     # Therefore the win condition is the result state '001'.
 
-    # If the player decides to stay
+    # If the player decides to stay, simply measure the state.
     qc = QuantumCircuit(3,3)
     qc.initialize(SUPERPOSITION, [0,1,2])
     qc.measure([0,1,2], [0,1,2])
@@ -52,7 +57,8 @@ def monty_quantum(iterations):
     
     win_ratio_stay = round(result_stay['001'] / (result_stay['001'] + result_stay['010'] + result_stay['100']), DIGITS)
 
-    # If the player decides to switch
+    # If the player decides to switch, measure another door first, then
+    # the player's door.
     qc = QuantumCircuit(3,3)
     qc.initialize(SUPERPOSITION, [0,1,2])
 
