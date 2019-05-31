@@ -1,0 +1,8 @@
+Classical result:
+Stay:   0.333   Switch: 0.675
+Simulated quantum result:
+Stay:   0.329   Switch: 0.482
+Running on an actual quantum computer.
+Backend: ibmqx4
+Experimental quantum result:
+Stay:   0.389   Switch: 0.418
