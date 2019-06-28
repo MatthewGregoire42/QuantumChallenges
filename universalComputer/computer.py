@@ -1,3 +1,4 @@
+import math
 from qiskit import IBMQ, QuantumCircuit, QuantumRegister, ClassicalRegister, execute, Aer, compile
 from qiskit.providers.ibmq import least_busy
 
@@ -71,7 +72,6 @@ qc.h(6)
 qc.h(5)
 qc += add(7, 6, 5, 4, 3, 2, 1, 0)
 qc.measure([7, 6, 5, 4, 3], [7, 6, 5, 4, 3])
-
 
 # Number of times to run the circuit
 SHOTS = 1024
