@@ -88,8 +88,9 @@ for i in range(20):
 
 # Now for an actual test!
 
-IBMQ.load_accounts(hub=None)
-BACKEND = least_busy(IBMQ.backends(simulator=False, filters=lambda x: x.configuration().n_qubits >= 14))
+provider = IBMQ.get_provider(hub='ibm-q')
+provider.load_account(hub=None)
+BACKEND = least_busy(provider.backends(simulator=False, filters=lambda x: x.configuration().n_qubits >= 14))
 
 print("Rolling dice with an actual quantum computer")
 print("Backend:", BACKEND.name())
