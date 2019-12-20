@@ -8,19 +8,24 @@ from qiskit import *
 from qiskit.visualization import plot_histogram
 from qiskit.providers.ibmq import least_busy
 
-Q = 3   # number of qubits
+Q = 3   # number of qubits needed for the circuit
 C = 3   # number of classical bits
 
 # Requires at least one account to already be saved.
 # If not, consult the Qiskit documentation at qiskit.org.
-IBMQ.load_accounts(hub=None)
+IBMQ.load_account()
+provider = IBMQ.get_provider(hub='ibm-q')
 
 qc = QuantumCircuit(Q,C)
 
 # Quantum circuit goes here
 
+qc.h(0)
+qc.cx(0,1)
+qc.measure([0,1], [0,1])
+
 # Draw the quantum circuit. 
-qc.draw(output='mpl').savefig("path\\to\\__circuit_file___.png")
+# qc.draw(output='mpl').savefig("path\\to\\__circuit_file___.png")
 
 # Number of times to run the circuit
 SHOTS = 1024
@@ -32,12 +37,12 @@ counts = sim_job.result().get_counts(qc)
 print("Simulator results:", counts)
 
 # Run the job on a real quantum computer
-backend = least_busy(IBMQ.backends(simulator=False))
+# Some example filters to select a backend are shown.
+backend = least_busy(provider.backends(simulator=False, filters=lambda x: x.configuration().n_qubits >= Q and x.name() != 'ibmq_16_melbourne'))
 print("The least busy backend is ", backend)
 job = execute(qc, backend, shots=SHOTS)
 real_counts = job.result().get_counts(qc)
 print("Actual result:", real_counts)
-
 # Retrieve an already existing job on a certain backend
 # Change NAME and JOB_ID to access the correct job
 NAME = 'ibmqx4'
