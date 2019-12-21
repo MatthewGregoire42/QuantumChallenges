@@ -1,5 +1,5 @@
 import math
-from qiskit import IBMQ, QuantumCircuit, QuantumRegister, ClassicalRegister, execute, Aer, compile
+from qiskit import IBMQ, QuantumCircuit, QuantumRegister, ClassicalRegister, execute, Aer
 from qiskit.providers.ibmq import least_busy
 
 Q = 1   # number of qubits
@@ -14,7 +14,8 @@ RANGE = abs(RANGE_MAX - RANGE_MIN)
 # Number of times to run the circuit
 SHOTS = 8192
 
-IBMQ.load_accounts(hub=None)
+IBMQ.load_account()
+provider = IBMQ.get_provider(hub='ibm-q')
 
 def measureComputational():
     out = QuantumCircuit(Q,C)
@@ -84,7 +85,7 @@ print(counts)
 print(analyze(counts))
 
 # Run the job on a physical backend
-backend = least_busy(IBMQ.backends())
+backend = least_busy(provider.backends())
 print(backend.name())
 job = execute(qc, backend, shots=SHOTS)
 real_counts = job.result().get_counts(qc)

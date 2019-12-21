@@ -5,7 +5,8 @@ from qiskit.providers.ibmq import least_busy
 Q = 8   # number of qubits
 C = 8   # number of classical bits
 
-IBMQ.load_accounts(hub=None)
+IBMQ.load_account()
+provider = IBMQ.get_provider(hub='ibm-q')
 
 qc = QuantumCircuit(Q,C)
 
@@ -83,7 +84,7 @@ counts = sim_job.result().get_counts(qc)
 print(counts)
 
 # # Run the job on a physical backend
-# backend = IBMQ.get_backend('ibmq_16_melbourne')
+# backend = provider.get_backend('ibmq_16_melbourne')
 # job = execute(qc, backend, shots=SHOTS)
 # counts = job.result().get_counts(qc)
 # print("Actual result:", real_counts)
