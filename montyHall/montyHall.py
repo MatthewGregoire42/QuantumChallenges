@@ -86,8 +86,9 @@ print("Stay:\t" + str(quantum_stay) + "\tSwitch:\t" + str(quantum_switch))
 
 print("Running on an actual quantum computer.")
 
-IBMQ.load_accounts(hub=None)
-BACKEND = least_busy(IBMQ.backends(simulator=False))
+provider = IBMQ.get_provider(hub='ibm-q')
+provider.load_account()
+BACKEND = least_busy(provider.backends(simulator=False, filters=lambda x: x.configuration().n_qubits >= 3))
 print("Backend:", BACKEND)
 
 quantum_stay_actual, quantum_switch_actual = monty_quantum(SHOTS)
