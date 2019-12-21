@@ -1,5 +1,5 @@
 import math
-from qiskit import IBMQ, QuantumCircuit, QuantumRegister, ClassicalRegister, execute, Aer, compile
+from qiskit import IBMQ, QuantumCircuit, QuantumRegister, ClassicalRegister, execute, Aer
 from qiskit.providers.ibmq import least_busy
 
 Q = 8   # number of qubits
